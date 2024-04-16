@@ -10,19 +10,17 @@ class SiteController extends Controller
 {
     public function createUser()
     {
-        // Generate a random name and email for the new user (replace with actual values)
         $name = 'John Doe';
         $email = 'john@example.com';
-        $password = 'password'; // Set the desired password for the new user
+        $password = 'password';
 
-        // Insert the user data into the users table
         DB::table('users')->insert([
             'name' => $name,
             'email' => $email,
-            'password' => Hash::make($password), // Hash the password before inserting
+            'password' => Hash::make($password),
         ]);
 
-        return 'User created successfully.';
+        return 'User created';
     }
     public function auth(Request $req) {
         if (Auth::attempt(['email'=>$req->em, 'password'=>$req->pwd])) {
